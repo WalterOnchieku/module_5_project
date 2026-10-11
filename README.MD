@@ -12,7 +12,47 @@ The project uses transfer learning with EfficientNetB0 and a FastAPI-ready model
 
 ## Dataset
 
-The dataset is organized into training, validation, and test subsets.
+This project uses the [Beans Leaf Disease Classification dataset](https://huggingface.co/datasets/AI-Lab-Makerere/beans), provided by AI Lab Makerere. The dataset contains images of bean leaves belonging to three classes: angular leaf spot, bean rust, and healthy leaves.
+
+The dataset is divided into three subsets:
+
+- **Training:** 1,034 images
+- **Validation:** 133 images
+- **Testing:** 128 images
+
+### Download the Dataset
+
+The dataset archives are hosted on Hugging Face:
+
+- [Training images — train.zip](https://huggingface.co/datasets/AI-Lab-Makerere/beans/resolve/main/data/train.zip)
+- [Validation images — validation.zip](https://huggingface.co/datasets/AI-Lab-Makerere/beans/resolve/main/data/validation.zip)
+- [Test images — test.zip](https://huggingface.co/datasets/AI-Lab-Makerere/beans/resolve/main/data/test.zip)
+
+The image archives are intentionally excluded from this Git repository because the training archive exceeds GitHub's 100 MB individual file limit. Download and extract the archives locally before running the notebook.
+
+### Installation and Extraction
+
+From the project root, run the following commands in a Linux or WSL terminal:
+
+```bash
+mkdir -p data/beans
+cd data/beans
+
+wget -O train.zip \
+  https://huggingface.co/datasets/AI-Lab-Makerere/beans/resolve/main/data/train.zip
+
+wget -O validation.zip \
+  https://huggingface.co/datasets/AI-Lab-Makerere/beans/resolve/main/data/validation.zip
+
+wget -O test.zip \
+  https://huggingface.co/datasets/AI-Lab-Makerere/beans/resolve/main/data/test.zip
+
+unzip train.zip
+unzip validation.zip
+unzip test.zip
+```
+
+After extraction, verify that the directory structure matches the following layout:
 
 ```text
 data/beans/
@@ -30,7 +70,12 @@ data/beans/
     └── healthy/
 ```
 
-The recorded dataset contains approximately 1,034 training images, 133 validation images, and 128 test images. The test set was kept separate for final evaluation.
+The dataset loader expects the three class folders to be present inside each split directory. If extraction creates an additional nested directory, move the split folders so that they match the structure shown above.
+
+### Dataset Exclusion
+
+The downloaded dataset and ZIP archives are excluded from version control through `.gitignore`. Users must obtain the images from the source linked above before running the training or evaluation notebook.
+
 
 ## Model Architecture
 
