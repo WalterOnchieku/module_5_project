@@ -1,0 +1,15 @@
+# Python
+venv/
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+
+# Local datasets — do not upload to GitHub
+data/beans/
+*.zip
+
+# Environment variables
+.env
+
+# Generated files
+.DS_Store
